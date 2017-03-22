@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Алина Волкова](https://up.htmlacademy.ru/javascript/9/user/285131).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Балесный].
 
 ---
 
