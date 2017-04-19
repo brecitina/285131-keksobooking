@@ -126,3 +126,19 @@ var drawPins = function () {
 
 drawPins();
 
+var firstAdObject = nearbyAds[0];
+var mainAd = document.querySelector('#lodge-template').content.cloneNode(true);
+
+mainAd.querySelector('.lodge__title').textContent = firstAdObject.offer.title;
+mainAd.querySelector('.lodge__address').textContent = firstAdObject.offer.address;
+mainAd.querySelector('.lodge__price').textContent = firstAdObject.offer.price + '&#x20bd;/ночь';
+if (firstAdObject.offer.type === 'flat') {
+  mainAd.querySelector('.lodge__type').textContent = 'Квартира';
+} else if (firstAdObject.offer.types === 'bungalo') {
+  mainAd.querySelector('.lodge__type').textContent = 'Бунгало';
+} else {
+  mainAd.querySelector('.lodge__type').textContent = 'Дом';
+}
+mainAd.querySelector('.lodge__rooms-and-guest').textContent = 'Для ' + firstAdObject.offer.guests + ' гостей в ' + 'firstAdObject.offer.rooms' + ' комнатах';
+mainAd.querySelector('.lodge__checkin-time').textContent = 'Заезд после ' + firstAdObject.offer.checkin + ', выезд до ' + 'firstAdObject.offer.checkout';
+mainAd.querySelector('.lodge__features').innerHTML = 
