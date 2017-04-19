@@ -32,10 +32,9 @@ function getRandomNumber(min, max) {
 }
 
 function getRandomFromArray(array) {
-  var i = Math.random() * (array.length);
+  var rand = Math.random() * (array.length);
 
-  i = Math.floor(i);
-  return array[i];
+  return array[Math.floor(rand)];
 }
 
 var getArrayOfRandomLength = function (array) {
@@ -48,17 +47,17 @@ var getArrayOfRandomLength = function (array) {
   return newArray;
 };
 
-var makeAd = function (j) {
+var makeAd = function (idx) {
   var location = {
     x: getRandomNumber(300, 900),
     y: getRandomNumber(100, 500)
   };
   return {
     author: {
-      avatar: 'img/avatars/user0' + (j + 1) + '.png'
+      avatar: 'img/avatars/user0' + (idx + 1) + '.png'
     },
     offer: {
-      title: TITLES[j],
+      title: TITLES[idx],
       address: location.x + ', ' + location.y,
       price: getRandomNumber(1000, 1000000),
       type: getRandomFromArray(TYPES),
@@ -77,8 +76,8 @@ var makeAd = function (j) {
 var makeAds = function (numberOfAds) {
   var nearbyAds = [];
 
-  for (var j = 0; j < numberOfAds; j++) {
-    nearbyAds.push(makeAd(j));
+  for (var i = 0; i < numberOfAds; i++) {
+    nearbyAds.push(makeAd(i));
   }
   return nearbyAds;
 };
