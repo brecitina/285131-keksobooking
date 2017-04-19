@@ -73,9 +73,9 @@ var makeAd = function (idx) {
   };
 };
 
-var makeAds = function (numberOfAds) {
-  var nearbyAds = [];
+var nearbyAds = []; // Массив с соседними объявлениями
 
+var makeAds = function (numberOfAds) {
   for (var i = 0; i < numberOfAds; i++) {
     nearbyAds.push(makeAd(i));
   }
@@ -83,3 +83,46 @@ var makeAds = function (numberOfAds) {
 };
 
 makeAds(8);
+
+var pinWidth = 40; // Возможно, объявление этих переменных стоит засунуть в саму функцию?
+var pinHeight = 40;
+
+var makePin = function (idx) {
+  var pin = document.createElement('div');
+
+  pin.className = 'pin';
+  pin.style = 'left: ' + (nearbyAds[idx].location.x + pinWidth / 2) + 'px; top: ' + (nearbyAds[idx].location.y + pinHeight) + 'px';
+  pin.insertAdjacentHTML('afterbegin', '<img>');
+  pin.firstChild.src = nearbyAds[idx].author.avatar;
+  pin.firstChild.className = 'rounded';
+  pin.firstChild.width = String(pinWidth);
+  pin.firstChild.height = String(pinHeight);
+
+  return pin;
+};
+
+// Зачем писать следующий код?
+// var pins = [];
+//
+// var makePins = function () {
+//
+//   for (var i = 0; i < nearbyAds.length; i++) {
+//    pins.push(makePin(i));
+//  }
+//  return pins;
+// };
+//
+// makePins();
+// Бесцельная часть кода закончилась.
+
+var drawPins = function () {
+  var pinsList = document.querySelector('.tokyo__pin-map');
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < nearbyAds.length; i++) {
+    fragment.appendChild(makePin(i));
+  }
+  pinsList.appendChild(fragment);
+};
+
+drawPins();
+
