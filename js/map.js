@@ -150,7 +150,7 @@ var fillOutMainAdFrom = function (ourObject) {
 
   mainAd.querySelector('.lodge__title').textContent = ourObject.offer.title;
   mainAd.querySelector('.lodge__address').textContent = ourObject.offer.address;
-  mainAd.querySelector('.lodge__price').textContent = ourObject.offer.price + '&#x20bd;/ночь';
+  mainAd.querySelector('.lodge__price').innerHTML = ourObject.offer.price + '&#x20bd;/ночь';
   fillType(ourObject);
   mainAd.querySelector('.lodge__rooms-and-guests').textContent = 'Для ' + ourObject.offer.quests + ' гостей в ' + ourObject.offer.rooms + ' комнатах';
   mainAd.querySelector('.lodge__checkin-time').textContent = 'Заезд после ' + ourObject.offer.checkin + ', выезд до ' + ourObject.offer.checkout;
